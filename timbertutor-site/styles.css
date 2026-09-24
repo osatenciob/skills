@@ -120,10 +120,20 @@ button:focus-visible {
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   font-family: var(--font-display);
   font-size: 1.4rem;
   color: var(--cream);
   letter-spacing: 0.01em;
+}
+
+/* Isotipo de la marca, recoloreado al mismo colorway (crema + ámbar)
+   para que se integre con el resto del header sin llamar la atención */
+.logo-mark {
+  height: 34px;
+  width: auto;
 }
 
 .logo-accent { color: var(--amber); }
@@ -350,6 +360,130 @@ button:focus-visible {
 }
 
 /* =========================================================================
+   Curso — sección exclusiva de venta, con fondo invertido para que
+   se distinga claramente del resto del flujo editorial
+   ========================================================================= */
+
+.course {
+  background: var(--amber-deep);
+  padding: 5rem 1.5rem;
+}
+
+.course-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.course h2 {
+  color: var(--cream);
+  font-size: clamp(1.9rem, 3.2vw, 2.5rem);
+  font-weight: 400;
+  max-width: 18ch;
+}
+
+.course-sub {
+  margin-top: 1rem;
+  color: rgba(239, 230, 211, 0.9);
+  font-size: 1.08rem;
+  max-width: 44ch;
+}
+
+.course-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1.75rem 0;
+}
+
+.course-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  color: var(--cream);
+  font-size: 0.98rem;
+}
+
+.check-icon {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: var(--cream);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.btn-invert {
+  display: inline-block;
+  background: var(--cream);
+  color: var(--amber-deep);
+  padding: 0.95rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border-radius: 10px 2px 10px 2px; /* espejo del botón primario del hero */
+  transition: background-color 0.25s ease, transform 0.15s ease;
+}
+
+.btn-invert:hover { background: #fff8ec; transform: translateY(-1px); }
+.btn-invert:active { transform: translateY(0); }
+
+.course-note {
+  margin-top: 0.9rem;
+  font-size: 0.85rem;
+  color: rgba(239, 230, 211, 0.75);
+}
+
+/* Etiqueta colgante con las cifras del curso, como una etiqueta de producto
+   atada a un mueble terminado */
+.course-tag {
+  justify-self: center;
+  width: 100%;
+  max-width: 260px;
+  background: var(--cream);
+  color: var(--walnut);
+  padding: 1.75rem 1.75rem 1.75rem 3rem;
+  position: relative;
+  clip-path: polygon(34px 0, 100% 0, 100% 100%, 34px 100%, 0 50%);
+  transform: rotate(-2deg);
+  box-shadow: 0 18px 30px -16px rgba(20, 12, 6, 0.4);
+}
+
+.course-tag::before {
+  /* orificio perforado de la etiqueta */
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--amber-deep);
+  border: 2px solid var(--walnut);
+}
+
+.course-tag-row {
+  display: flex;
+  gap: 0.35rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px dashed rgba(43, 29, 20, 0.25);
+  font-size: 0.95rem;
+}
+.course-tag-row:last-child { border-bottom: none; }
+
+.course-tag-row strong {
+  font-family: var(--font-display);
+  color: var(--amber-deep);
+}
+
+/* =========================================================================
    Del taller
    ========================================================================= */
 
@@ -482,6 +616,10 @@ button:focus-visible {
   .hero-art { max-width: 340px; margin: 0 auto; order: -1; }
 
   .card-grid { grid-template-columns: 1fr 1fr; }
+
+  .course-inner { grid-template-columns: 1fr; }
+
+  .course-tag { justify-self: start; max-width: 280px; }
 }
 
 @media (max-width: 620px) {
