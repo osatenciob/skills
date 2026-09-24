@@ -1,0 +1,514 @@
+/* =========================================================================
+   TimberTutor — hoja de estilos
+   Paleta y tipografía inspiradas en un taller de carpintería: maderas
+   cálidas, negros suaves y un acento ámbar quemado. Sin fuentes externas:
+   se usan pilas de fuentes del sistema.
+   ========================================================================= */
+
+:root {
+  /* --- Color --- */
+  --walnut:      #2B1D14; /* nogal oscuro: header, footer */
+  --char:        #201712; /* texto principal, negro cálido (no #000/#111) */
+  --cream:       #EFE6D3; /* fondo general, crema cálido */
+  --cream-soft:  #E4D8C0; /* fondo de tarjetas, un tono más oscuro que el fondo */
+  --oak:         #B98452; /* roble: líneas, iconos, bordes */
+  --amber-deep:  #97501A; /* ámbar quemado: botón principal */
+  --amber-deep-hover: #7C400F;
+  --amber:       #C97A2B; /* ámbar claro: acentos y hover */
+
+  /* --- Tipografía --- */
+  --font-display: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: Consolas, 'Liberation Mono', Menlo, monospace;
+
+  /* --- Estructura --- */
+  --header-h: 76px;
+  --max-w: 1120px;
+}
+
+/* =========================================================================
+   Reset básico
+   ========================================================================= */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--char);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--walnut);
+  margin: 0;
+  line-height: 1.15;
+}
+
+p { margin: 0; }
+
+ul { list-style: none; margin: 0; padding: 0; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+section {
+  scroll-margin-top: var(--header-h);
+}
+
+/* Accesibilidad: foco visible consistente con la paleta */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--amber-deep);
+  color: var(--cream);
+  padding: 0.75rem 1.25rem;
+  z-index: 200;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+/* =========================================================================
+   Header
+   ========================================================================= */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-h);
+  background: var(--walnut);
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(20, 12, 6, 0.25);
+}
+
+.header-inner {
+  max-width: var(--max-w);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--cream);
+  letter-spacing: 0.01em;
+}
+
+.logo-accent { color: var(--amber); }
+
+.nav-list {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-list a {
+  color: var(--cream);
+  font-size: 0.98rem;
+  padding: 0.4rem 0.1rem;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.nav-list a:hover,
+.nav-list a:focus-visible {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+/* Botón hamburguesa: oculto en escritorio */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.nav-toggle-bar {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--cream);
+  border-radius: 1px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* =========================================================================
+   Hero
+   ========================================================================= */
+
+.hero {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: calc(var(--header-h) + 3.5rem) 1.5rem 4rem;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.hero-copy { max-width: 46ch; }
+
+.hero h1 {
+  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+  font-weight: 400;
+}
+
+.ruler-divider {
+  width: 140px;
+  color: var(--oak);
+  margin: 1.4rem 0 1.2rem;
+}
+
+.ruler-divider svg { width: 100%; height: 14px; }
+
+.hero-sub {
+  font-size: 1.15rem;
+  color: var(--char);
+  max-width: 38ch;
+  margin-bottom: 1.9rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--amber-deep);
+  color: var(--cream);
+  border: none;
+  padding: 0.95rem 2rem;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border-radius: 2px 10px 2px 10px; /* esquinas asimétricas, no un rectángulo genérico */
+  transition: background-color 0.25s ease, transform 0.15s ease;
+}
+
+.btn-primary:hover {
+  background: var(--amber-deep-hover);
+  transform: translateY(-1px);
+}
+.btn-primary:active { transform: translateY(0); }
+
+/* Etiqueta colgante con el tip del oficio */
+.tip-tag {
+  margin-top: 1.5rem;
+  max-width: 38ch;
+  background: var(--cream-soft);
+  border-left: 3px solid var(--amber);
+  padding: 0.9rem 1.1rem;
+  font-size: 0.95rem;
+  color: var(--walnut);
+  animation: tip-drop 0.35s ease;
+}
+
+.tip-tag[hidden] { display: none; }
+
+@keyframes tip-drop {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Ilustración de la junta --- */
+
+.hero-art { width: 100%; }
+
+.joint-svg { width: 100%; height: auto; }
+
+.board-a { fill: var(--walnut); }
+.board-b { fill: var(--oak); }
+
+.grain {
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.12);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.joint-line {
+  fill: none;
+  stroke: var(--amber);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: draw-joint 1.8s ease-out 0.2s forwards;
+}
+
+@keyframes draw-joint {
+  to { stroke-dashoffset: 0; }
+}
+
+/* =========================================================================
+   Técnicas
+   ========================================================================= */
+
+.techniques {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+
+.techniques h2,
+.workshop h2 {
+  font-size: clamp(1.9rem, 3.2vw, 2.5rem);
+  font-weight: 400;
+  max-width: 20ch;
+}
+
+.card-grid {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+.card {
+  background: var(--cream-soft);
+  padding: 2rem 1.75rem;
+  border: 1px solid rgba(43, 29, 20, 0.1);
+  /* esquina superior izquierda achaflanada, como un corte a bisel */
+  clip-path: polygon(22px 0, 100% 0, 100% 100%, 0 100%, 0 22px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--oak);
+  box-shadow: 0 16px 30px -18px rgba(43, 25, 10, 0.45);
+}
+
+.card-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 1.1rem;
+  fill: none;
+  stroke: var(--amber-deep);
+  stroke-width: 2.2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.card-icon .gloss { stroke: var(--amber); stroke-width: 1.6; }
+
+.card h3 {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: 0.6rem;
+}
+
+.card p {
+  font-size: 0.98rem;
+  color: var(--char);
+  max-width: 34ch;
+}
+
+/* =========================================================================
+   Del taller
+   ========================================================================= */
+
+.workshop {
+  background: var(--cream-soft);
+  padding: 5rem 1.5rem 6rem;
+}
+
+.workshop > * {
+  max-width: var(--max-w);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.workshop-lead {
+  margin-top: 0.75rem;
+  color: rgba(32, 23, 18, 0.75);
+  max-width: 50ch;
+}
+
+.plank-row {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.plank {
+  flex: 1 1 240px;
+  margin: 0;
+  padding: 1.6rem 1.5rem;
+  color: var(--cream);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  position: relative;
+  /* vetas de madera simuladas con degradados superpuestos */
+  background:
+    repeating-linear-gradient(90deg,
+      rgba(0, 0, 0, 0.08) 0px, rgba(0, 0, 0, 0.08) 2px,
+      transparent 2px, transparent 14px),
+    linear-gradient(160deg, #4a3220, #2f2013 65%);
+}
+
+/* un leve giro por tabla, como si estuvieran apiladas a mano */
+.plank-1 { transform: rotate(-0.6deg); }
+.plank-2 { transform: rotate(0.5deg); }
+.plank-3 { transform: rotate(-0.4deg); }
+.plank-4 { transform: rotate(0.7deg); }
+
+.plank::before {
+  /* nudo de madera, distinto en cada tabla */
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.35), transparent 70%);
+}
+.plank-1::before { top: 14px; right: 22px; }
+.plank-2::before { bottom: 16px; left: 26px; }
+.plank-3::before { top: 20px; left: 30%; }
+.plank-4::before { bottom: 12px; right: 34%; }
+
+/* =========================================================================
+   Footer
+   ========================================================================= */
+
+.site-footer {
+  background: var(--walnut);
+  color: var(--cream);
+}
+
+/* Borde tipo "corte de sierra" entre el taller y el pie de página */
+.saw-edge {
+  height: 14px;
+  background-image:
+    linear-gradient(135deg, var(--cream-soft) 25%, transparent 25%),
+    linear-gradient(225deg, var(--cream-soft) 25%, transparent 25%);
+  background-size: 20px 20px;
+  background-position: 0 0;
+}
+
+.footer-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3rem;
+  text-align: center;
+}
+
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--amber);
+  margin-bottom: 0.4rem;
+}
+
+.footer-tag {
+  font-size: 0.92rem;
+  color: rgba(239, 230, 211, 0.75);
+}
+
+/* =========================================================================
+   Movimiento reducido
+   ========================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .joint-line {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .tip-tag { animation: none; }
+  .card, .btn-primary, .nav-toggle-bar, .nav-list a {
+    transition: none;
+  }
+}
+
+/* =========================================================================
+   Responsive
+   ========================================================================= */
+
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: calc(var(--header-h) + 2.5rem);
+    text-align: left;
+  }
+
+  .hero-art { max-width: 340px; margin: 0 auto; order: -1; }
+
+  .card-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 620px) {
+  .header-inner { padding: 0 1.25rem; }
+
+  .nav-toggle { display: flex; }
+
+  .nav-list {
+    position: absolute;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    background: var(--walnut);
+    flex-direction: column;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .nav-list.open { max-height: 260px; }
+
+  .nav-list li { border-top: 1px solid rgba(239, 230, 211, 0.12); }
+
+  .nav-list a { display: block; padding: 1rem 1.5rem; }
+
+  .card-grid { grid-template-columns: 1fr; }
+
+  .plank-row { flex-direction: column; }
+}

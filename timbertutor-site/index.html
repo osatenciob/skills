@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TimberTutor — Domina el arte del ensamble</title>
+  <meta name="description" content="Uniones precisas, acabados de lujo y carpintería profesional. Aprende las técnicas del oficio.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Enlace de accesibilidad para saltar al contenido -->
+  <a class="skip-link" href="#inicio">Saltar al contenido</a>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#inicio" class="logo">Timber<span class="logo-accent">Tutor</span></a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navList">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <nav class="nav" aria-label="Navegación principal">
+        <ul class="nav-list" id="navList">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#tecnicas">Técnicas</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== HERO ===================== -->
+    <section id="inicio" class="hero">
+      <div class="hero-copy">
+        <h1>Domina el arte<br>del ensamble</h1>
+
+        <div class="ruler-divider" aria-hidden="true">
+          <svg viewBox="0 0 220 20" preserveAspectRatio="none">
+            <line x1="0" y1="10" x2="220" y2="10" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="0" y1="2" x2="0" y2="18" stroke="currentColor" stroke-width="2"/>
+            <line x1="20" y1="5" x2="20" y2="15" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="40" y1="5" x2="40" y2="15" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="60" y1="5" x2="60" y2="15" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="80" y1="5" x2="80" y2="15" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="100" y1="2" x2="100" y2="18" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+
+        <p class="hero-sub">Uniones precisas. Acabados de lujo. Carpintería profesional.</p>
+
+        <button class="btn-primary" id="ctaBtn" type="button">Ver técnicas</button>
+
+        <!-- Tarjeta colgante con el tip del oficio, oculta hasta que se pulse el botón -->
+        <div class="tip-tag" id="tipTag" hidden>
+          <p id="tipText"></p>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <svg id="jointArt" class="joint-svg" viewBox="0 0 300 300" role="img" aria-label="Ilustración de una junta cola de milano">
+          <!-- Tabla izquierda (nogal) -->
+          <path class="board board-a" d="M30,10 L150,10 L190,25 L190,60 L150,75 L110,90 L110,120 L150,135
+            L190,150 L190,185 L150,200 L110,215 L110,245 L150,260 L190,275 L190,290 L30,290 Z"/>
+          <!-- Tabla derecha (roble) -->
+          <path class="board board-b" d="M270,10 L150,10 L190,25 L190,60 L150,75 L110,90 L110,120 L150,135
+            L190,150 L190,185 L150,200 L110,215 L110,245 L150,260 L190,275 L190,290 L270,290 Z"/>
+          <!-- Vetas sutiles dentro de cada tabla -->
+          <path class="grain" d="M45,40 Q90,45 130,38" />
+          <path class="grain" d="M45,130 Q90,135 105,128" />
+          <path class="grain" d="M45,230 Q90,225 130,232" />
+          <path class="grain" d="M255,55 Q220,60 195,52" />
+          <path class="grain" d="M255,160 Q220,165 195,158" />
+          <path class="grain" d="M255,260 Q220,255 195,262" />
+          <!-- Línea de la junta: se "dibuja" al cargar la página -->
+          <path id="jointLine" class="joint-line" d="M150,10 L190,25 L190,60 L150,75 L110,90 L110,120 L150,135
+            L190,150 L190,185 L150,200 L110,215 L110,245 L150,260 L190,275 L190,290" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- ===================== TÉCNICAS ===================== -->
+    <section id="tecnicas" class="techniques">
+      <h2>Técnicas del oficio</h2>
+
+      <div class="card-grid">
+        <article class="card">
+          <svg class="card-icon" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M14,8 H34 L28,40 H20 Z" />
+            <path class="gloss" d="M24,8 V40" stroke-dasharray="1.5 3.5" />
+          </svg>
+          <h3>Uniones invisibles</h3>
+          <p>Cola de milano, caja y espiga, media madera: aprende a cortar ensambles que se sostienen solos, sin un solo tornillo a la vista.</p>
+        </article>
+
+        <article class="card">
+          <svg class="card-icon" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M8,6 L8,42 L44,42" />
+            <path d="M8,15 H15 M8,23.5 H15 M8,32 H15 M17,42 V35 M25.5,42 V35 M34,42 V35" />
+          </svg>
+          <h3>Alineación perfecta</h3>
+          <p>Un ángulo de 90° no se improvisa. Domina la escuadra, el gramil y la regla para que cada corte encaje al milímetro.</p>
+        </article>
+
+        <article class="card">
+          <svg class="card-icon" viewBox="0 0 48 48" aria-hidden="true">
+            <ellipse cx="24" cy="24" rx="19" ry="10.5" />
+            <ellipse cx="24" cy="24" rx="12" ry="6.5" />
+            <ellipse cx="24" cy="24" rx="4.5" ry="2.4" />
+            <path class="gloss" d="M12,14 Q18,8 27,9" />
+          </svg>
+          <h3>Acabados de lujo</h3>
+          <p>Lijado progresivo, aceite de tung, cera de abejas: el tacto y el brillo final distinguen un mueble de un proyecto de fin de semana.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== DEL TALLER ===================== -->
+    <section id="proyectos" class="workshop">
+      <h2>Del taller</h2>
+      <p class="workshop-lead">Frases que se repiten entre virutas y prensas, hasta que se vuelven costumbre.</p>
+
+      <div class="plank-row">
+        <blockquote class="plank plank-1"><p>&ldquo;Mide dos veces, corta una.&rdquo;</p></blockquote>
+        <blockquote class="plank plank-2"><p>&ldquo;La madera no miente: se nota cada prisa.&rdquo;</p></blockquote>
+        <blockquote class="plank plank-3"><p>&ldquo;Un buen ensamble no necesita cola.&rdquo;</p></blockquote>
+        <blockquote class="plank plank-4"><p>&ldquo;La paciencia se lija, no se compra.&rdquo;</p></blockquote>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer id="contacto" class="site-footer">
+    <div class="saw-edge" aria-hidden="true"></div>
+    <div class="footer-inner">
+      <p class="footer-brand">TimberTutor</p>
+      <p class="footer-tag">Hecho con precisión y madera.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
